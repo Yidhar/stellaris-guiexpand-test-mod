@@ -20,3 +20,7 @@
  GUIEXPAND_TEST_BTN_BUMP:0 "计数器加 1"
  guiexpand_test_flag_on:0 "已设置"
  guiexpand_test_flag_off:0 "未设置"
+ GUIEXPAND_TEST_EL_TITLE:0 "元素和 HUD（测试）"
+ GUIEXPAND_TEST_EL_INTRO:0 "下面的卡片是示例插件注册的元素，里面的内容由宿主画。再下面是一个没人提供的元素。"
+ GUIEXPAND_TEST_EL_CARD:0 "已注册的元素"
+ GUIEXPAND_TEST_EL_TOGGLE:0 "显示 / 隐藏第一个面板"
