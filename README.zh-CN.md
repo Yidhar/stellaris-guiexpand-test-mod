@@ -15,7 +15,7 @@
 | `tools/mod_install.py` | 安装 / 卸载到你的 mod 文件夹和播放集 |
 | `tools/check_mod.py` | 静态检查：每种语言的 loc 键、effect 是否存在、BOM |
 
-这些 effect 和旗标也是 stellaris-guiexpand 自己的 *Command Deck* 脚本页用的（`guiexpand_test_grant_energy`、`guiexpand_test_set_mark`、`guiexpand_test_clear_mark`、`guiexpand_test_rich_only`；旗标是 `guiexpand_test_marked`）。
+这些 effect 和旗标也是 [stellaris-argon-ui](https://github.com/Yidhar/stellaris-argon-ui) 的 *Command Deck* 脚本页用的（`guiexpand_test_grant_energy`、`guiexpand_test_set_mark`、`guiexpand_test_clear_mark`、`guiexpand_test_rich_only`；旗标是 `guiexpand_test_marked`）。
 
 ## 使用
 

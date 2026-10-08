@@ -17,7 +17,7 @@ script computes (a counter, a flag, a script value), and has buttons that run th
 | `tools/mod_install.py` | install / uninstall into your mod folder and playset |
 | `tools/check_mod.py` | static checks: loc keys in every language, effects exist, BOM |
 
-The effects and the flag are also what stellaris-guiexpand's own *Command Deck* uses on its script page (`guiexpand_test_grant_energy`, `guiexpand_test_set_mark`, `guiexpand_test_clear_mark`,
+The effects and the flag are also what the *Command Deck* of [stellaris-argon-ui](https://github.com/Yidhar/stellaris-argon-ui) uses on its script page (`guiexpand_test_grant_energy`, `guiexpand_test_set_mark`, `guiexpand_test_clear_mark`,
 `guiexpand_test_rich_only`; the flag is `guiexpand_test_marked`).
 
 ## Use
