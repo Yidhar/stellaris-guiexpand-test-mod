@@ -38,8 +38,10 @@ for key in ("name", "version", "supported_version"):
 
 # localisation
 langs = {}
+yml_texts = []
 for path in glob.glob(os.path.join(ROOT, "localisation", "*", "*.yml")):
     text, has_bom = read(path)
+    yml_texts.append((path, text))
     lang = os.path.basename(os.path.dirname(path))
     if not has_bom:
         bad(f"{os.path.relpath(path, ROOT)}: no UTF-8 BOM (the engine ignores the file)")
@@ -72,9 +74,31 @@ for path in panel_files:
         if eff not in effects_defined:
             bad(f"{rel}: button effect {eff} is not defined in common/button_effects")
 
+# scripted_loc and script values: a typo in any of them fails silently in the game
+script_values = set()
+for path in glob.glob(os.path.join(ROOT, "common", "script_values", "*.txt")):
+    script_values |= set(re.findall(r"^([A-Za-z0-9_]+)\s*=\s*\{", re.sub(r"#.*", "", read(path)[0]), re.M))
+defined_texts = set()
+for path in glob.glob(os.path.join(ROOT, "common", "scripted_loc", "*.txt")):
+    text_nc = re.sub(r"#.*", "", read(path)[0])
+    rel = os.path.relpath(path, ROOT)
+    defined_texts |= set(re.findall(r"\bname\s*=\s*([A-Za-z0-9_]+)", text_nc))
+    for key in re.findall(r"\blocalization_key\s*=\s*([A-Za-z0-9_]+)", text_nc):
+        if key not in all_keys:
+            bad(f"{rel}: localisation key {key} is not defined")
+    for v in re.findall(r"\bvalue\s*=\s*value:([A-Za-z0-9_]+)", text_nc):
+        if v not in script_values:
+            bad(f"{rel}: script value {v} is not defined in common/script_values")
+# [Root.Name] in a localisation text: a CamelCase name that is not one of the game's Get... commands has to be a defined_text of this mod
+for path, text in yml_texts:
+    for ref in sorted(set(re.findall(r"\[Root\.([A-Za-z0-9_]+)\]", text))):
+        if ref[0].isupper() and not ref.startswith("Get") and ref not in defined_texts:
+            bad(f"{os.path.relpath(path, ROOT)}: [Root.{ref}] is not a defined_text of common/scripted_loc")
+
 if problems:
     print("mod check FAILED:", file=sys.stderr)
     for p in problems:
         print("  " + p, file=sys.stderr)
     sys.exit(1)
-print(f"mod ok: {len(all_keys)} localisation keys in {len(langs)} languages, {len(effects_defined)} button effects, {len(panel_files)} panel file(s)")
+print(f"mod ok: {len(all_keys)} localisation keys in {len(langs)} languages, {len(effects_defined)} button effects, {len(defined_texts)} scripted_loc, "
+      f"{len(script_values)} script value(s), {len(panel_files)} panel file(s)")

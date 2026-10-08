@@ -5,13 +5,14 @@
 A small mod for **Stellaris 4.5.2** that exists to test and demonstrate [guidll](https://github.com/Yidhar/guidll), the shared GUI host plugin. It is also the smallest
 complete example of a mod that **declares a panel**: copy its layout for your own.
 
-It does nothing by itself. With guidll installed it adds one window, *Mod panel (declared in script)*, which shows live values from your empire and has buttons
-that run the mod's four button effects.
+It does nothing by itself. With guidll installed it adds one window, *Mod panel (declared in script)*, which shows live values from your empire, values that the mod's
+script computes (a counter, a flag, a script value), and has buttons that run the mod's five button effects.
 
 | File | What it is |
 |---|---|
 | `mod/guidll_test_mod/interface/stl_gui/guidll_test.txt` | the panel declaration (see guidll's [mod author guide](https://github.com/Yidhar/guidll/blob/main/docs/mod-authors.md)) |
-| `mod/guidll_test_mod/common/button_effects/guidll_test.txt` | four button effects: grant 100 energy; set a country flag; clear it; one that needs a million alloys (so the engine refuses it, to show the refusal text) |
+| `mod/guidll_test_mod/common/button_effects/guidll_test.txt` | five button effects: grant 100 energy; set a country flag; clear it; add 1 to a counter variable; one that needs a million alloys (so the engine refuses it, to show the refusal text) |
+| `mod/guidll_test_mod/common/scripted_loc/`, `common/script_values/` | what the panel's last lines show: a `scripted_loc` chosen by a trigger (the flag), and a script value (10, or 15 while the flag is set) behind a `scripted_loc`. Together with the counter variable and `[Root.GetName]` these are the four kinds of "values the script computes" (guidll's [mod author guide](https://github.com/Yidhar/guidll/blob/main/docs/mod-authors.md#showing-values-the-script-computes)) |
 | `mod/guidll_test_mod/localisation/{english,simp_chinese}/` | the texts in two languages (UTF-8 with BOM) |
 | `tools/mod_install.py` | install / uninstall into your mod folder and playset |
 | `tools/check_mod.py` | static checks: loc keys in every language, effects exist, BOM |

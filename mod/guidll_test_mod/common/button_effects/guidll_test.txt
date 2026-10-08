@@ -28,6 +28,19 @@ guidll_test_clear_mark = {
 	}
 }
 
+# A stored variable: the panel shows it as "[Root.guidll_test_counter]". The counter is created the first time it is bumped.
+guidll_test_bump_counter = {
+	potential = { always = yes }
+	allow = { always = yes }
+	effect = {
+		if = {
+			limit = { NOT = { check_variable = { which = guidll_test_counter value >= 0 } } }
+			set_variable = { which = guidll_test_counter value = 0 }
+		}
+		change_variable = { which = guidll_test_counter value = 1 }
+	}
+}
+
 # Needs far more alloys than any test save has: shows how the engine's own allow check is reported back to the UI.
 guidll_test_rich_only = {
 	potential = { always = yes }

@@ -4,12 +4,13 @@
 
 **Stellaris 4.5.2** 的一个小 mod，用来测试和演示公共 GUI 宿主插件 [guidll](https://github.com/Yidhar/guidll)。它也是“**声明面板**”的 mod 里最小的完整示例：写自己的 mod 时可以照抄它的目录结构。
 
-它自己什么也不做。装了 guidll 之后，它多一个窗口 *Mod 面板（脚本声明）*：显示你帝国的实时数值，并有按钮执行 mod 的四个 button effect。
+它自己什么也不做。装了 guidll 之后，它多一个窗口 *Mod 面板（脚本声明）*：显示你帝国的实时数值和 mod 脚本算出来的值（计数器、旗标、脚本值），并有按钮执行 mod 的五个 button effect。
 
 | 文件 | 内容 |
 |---|---|
 | `mod/guidll_test_mod/interface/stl_gui/guidll_test.txt` | 面板声明（语法见 guidll 的[mod 作者指南](https://github.com/Yidhar/guidll/blob/main/docs/mod-authors.md)） |
-| `mod/guidll_test_mod/common/button_effects/guidll_test.txt` | 四个 button effect：注入 100 能量币；设置国家旗标；清除旗标；需要一百万合金的一个（引擎会拒绝它，用来演示拒绝原因的文字） |
+| `mod/guidll_test_mod/common/button_effects/guidll_test.txt` | 五个 button effect：注入 100 能量币；设置国家旗标；清除旗标；给计数器变量加 1；需要一百万合金的一个（引擎会拒绝它，用来演示拒绝原因的文字） |
+| `mod/guidll_test_mod/common/scripted_loc/`、`common/script_values/` | 面板最后几行显示的内容：由触发器选择的 `scripted_loc`（旗标），以及放在 `scripted_loc` 后面的脚本值（10，旗标设置后是 15）。加上计数器变量和 `[Root.GetName]`，就是四种"脚本算出来的值"（见 guidll 的 [mod 作者指南](https://github.com/Yidhar/guidll/blob/main/docs/mod-authors.md#showing-values-the-script-computes)） |
 | `mod/guidll_test_mod/localisation/{english,simp_chinese}/` | 两种语言的文字（UTF-8 带 BOM） |
 | `tools/mod_install.py` | 安装 / 卸载到你的 mod 文件夹和播放集 |
 | `tools/check_mod.py` | 静态检查：每种语言的 loc 键、effect 是否存在、BOM |

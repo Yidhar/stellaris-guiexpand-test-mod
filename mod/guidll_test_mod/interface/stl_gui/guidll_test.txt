@@ -27,5 +27,13 @@ panel = {
 		spacer = 6
 		button = { text = GUIDLL_TEST_BTN_GRANT effect = guidll_test_grant_energy }
 		button = { text = GUIDLL_TEST_BTN_RICH  effect = guidll_test_rich_only }
+		separator = yes
+		# Values the script computes. A localisation text may contain [Root.<variable>], [Root.GetName] or a scripted_loc: guidll has the engine
+		# evaluate it for the player's country (the strings are in the localisation files).
+		text = { text = GUIDLL_TEST_SC_NAME }       # [Root.GetName]
+		text = { text = GUIDLL_TEST_SC_COUNTER }    # a stored variable, [Root.guidll_test_counter]
+		text = { text = GUIDLL_TEST_SC_FLAG }       # a scripted_loc with a trigger, [Root.GuidllTestFlag]
+		text = { text = GUIDLL_TEST_SC_VALUE }      # a script value through a scripted_loc, [Root.GuidllTestValue]
+		button = { text = GUIDLL_TEST_BTN_BUMP effect = guidll_test_bump_counter }
 	}
 }
