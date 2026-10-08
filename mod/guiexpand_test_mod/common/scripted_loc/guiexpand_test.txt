@@ -1,0 +1,18 @@
+# Dynamic texts for the stellaris-guiexpand test panel. In a localisation string they are written [Root.<name>]; stellaris-guiexpand has the engine evaluate them for the
+# player's country, so a panel can show what a trigger or a script value computes.
+
+# text chosen by a trigger
+defined_text = {
+	name = GuiexpandTestFlag
+	text = {
+		trigger = { has_country_flag = guiexpand_test_marked }
+		localization_key = guiexpand_test_flag_on
+	}
+	default = guiexpand_test_flag_off
+}
+
+# a script value as text
+defined_text = {
+	name = GuiexpandTestValue
+	value = value:guiexpand_test_value
+}

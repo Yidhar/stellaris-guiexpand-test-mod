@@ -1,11 +1,11 @@
 """Installs / removes the test mod in the user's Stellaris mod folder and in the active playset (dlc_load.json).
 
-    python tools/mod_install.py install            copy mod/guidll_test_mod into <Documents>/Paradox Interactive/Stellaris/mod and enable it
+    python tools/mod_install.py install            copy mod/guiexpand_test_mod into <Documents>/Paradox Interactive/Stellaris/mod and enable it
     python tools/mod_install.py install --link     enable it in place: the .mod file's path= points into this repository (edit, restart the game, no copy)
     python tools/mod_install.py uninstall          disable it and remove what install made
     python tools/mod_install.py status
 
-Only the entry `mod/guidll_test_mod.mod` of enabled_mods is added or removed; the rest of dlc_load.json is left as it is. Mods are read when the game
+Only the entry `mod/guiexpand_test_mod.mod` of enabled_mods is added or removed; the rest of dlc_load.json is left as it is. Mods are read when the game
 starts, so a running game has to be restarted. The launcher (stl) or the Paradox launcher can do the same by hand: this is the scripted way.
 """
 import ctypes
@@ -14,7 +14,7 @@ import os
 import shutil
 import sys
 
-NAME = "guidll_test_mod"
+NAME = "guiexpand_test_mod"
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.abspath(os.path.join(HERE, "..", "mod", NAME))
 ENTRY = f"mod/{NAME}.mod"

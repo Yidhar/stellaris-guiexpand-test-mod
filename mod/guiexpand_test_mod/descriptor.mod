@@ -1,4 +1,4 @@
-name="guidll test mod"
+name="stellaris-guiexpand test mod"
 version="1"
 tags={
 	"Utilities"

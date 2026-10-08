@@ -1,9 +1,0 @@
-# A script value, computed by the engine from the game state each time it is read. guidll shows it through the scripted_loc
-# GuidllTestValue (common/scripted_loc/guidll_test.txt): the panel text is "[Root.GuidllTestValue]".
-guidll_test_value = {
-	base = 10
-	modifier = {
-		add = 5
-		has_country_flag = guidll_test_marked
-	}
-}

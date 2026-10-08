@@ -1,7 +1,7 @@
 name: Check
 
 # Every push and pull request runs the static checks of the mod. Pushing a tag v<version> also publishes a GitHub Release with the mod as a zip
-# (the folder guidll_test_mod, ready to unpack into the mod folder).
+# (the folder guiexpand_test_mod, ready to unpack into the mod folder).
 on:
   push:
     branches: [main]
@@ -28,10 +28,10 @@ jobs:
         if: github.ref_type == 'tag'
         run: |
           cd mod
-          zip -r ../guidll-test-mod-${GITHUB_REF_NAME}.zip guidll_test_mod
+          zip -r ../stellaris-guiexpand-test-mod-${GITHUB_REF_NAME}.zip guiexpand_test_mod
       - name: Publish release
         if: github.ref_type == 'tag'
         uses: softprops/action-gh-release@v2
         with:
-          files: guidll-test-mod-*.zip
+          files: stellaris-guiexpand-test-mod-*.zip
           generate_release_notes: true

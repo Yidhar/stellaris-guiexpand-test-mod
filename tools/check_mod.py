@@ -13,7 +13,7 @@ import os
 import re
 import sys
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "mod", "guidll_test_mod"))
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "mod", "guiexpand_test_mod"))
 problems = []
 
 

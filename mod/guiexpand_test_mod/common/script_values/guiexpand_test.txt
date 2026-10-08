@@ -1,0 +1,9 @@
+# A script value, computed by the engine from the game state each time it is read. stellaris-guiexpand shows it through the scripted_loc
+# GuiexpandTestValue (common/scripted_loc/guiexpand_test.txt): the panel text is "[Root.GuiexpandTestValue]".
+guiexpand_test_value = {
+	base = 10
+	modifier = {
+		add = 5
+		has_country_flag = guiexpand_test_marked
+	}
+}
