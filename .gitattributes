@@ -1,0 +1,3 @@
+# Text files are stored with LF. The localisation files keep their UTF-8 byte order mark (the engine ignores them without it).
+* text=auto
+*.png binary

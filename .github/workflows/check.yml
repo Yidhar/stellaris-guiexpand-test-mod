@@ -1,0 +1,37 @@
+name: Check
+
+# Every push and pull request runs the static checks of the mod. Pushing a tag v<version> also publishes a GitHub Release with the mod as a zip
+# (the folder guidll_test_mod, ready to unpack into the mod folder).
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write  # creating the release
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the mod
+        run: |
+          python -m py_compile tools/check_mod.py tools/mod_install.py
+          python tools/check_mod.py
+      - name: Package
+        if: github.ref_type == 'tag'
+        run: |
+          cd mod
+          zip -r ../guidll-test-mod-${GITHUB_REF_NAME}.zip guidll_test_mod
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: guidll-test-mod-*.zip
+          generate_release_notes: true

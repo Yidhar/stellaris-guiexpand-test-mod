@@ -1,0 +1,31 @@
+# A panel declared by a mod and drawn by guidll (grammar: docs/mod-authors.md in the guidll repository).
+# Without the plugin this file is never read: the game does not look into this folder.
+
+stl_gui_version = 1
+
+panel = {
+	id = overview
+	title = GUIDLL_TEST_TITLE            # a localisation key; text with a space in it is shown as written
+	size = { 380 440 }
+
+	content = {
+		text = { text = GUIDLL_TEST_INTRO }
+		separator = yes
+		date = { label = GUIDLL_TEST_DATE }
+		value = { label = GUIDLL_TEST_ENERGY    resource = energy    show = stock }
+		value = { label = GUIDLL_TEST_ENERGY_NET resource = energy   show = net }
+		gauge = { label = GUIDLL_TEST_MINERALS  resource = minerals }
+		stat  = { label = GUIDLL_TEST_COLONIES  stat = colonies }
+		stat  = { label = GUIDLL_TEST_MIL       stat = military_power }
+		separator = yes
+		# a button_effect asked as a yes/no question: allowed right now?  (clear_mark is allowed exactly while the flag is set)
+		badge = { probe = guidll_test_clear_mark  yes = GUIDLL_TEST_MARK_SET  no = GUIDLL_TEST_MARK_UNSET }
+		row = {
+			button = { text = GUIDLL_TEST_BTN_SET    effect = guidll_test_set_mark }
+			button = { text = GUIDLL_TEST_BTN_CLEAR  effect = guidll_test_clear_mark }
+		}
+		spacer = 6
+		button = { text = GUIDLL_TEST_BTN_GRANT effect = guidll_test_grant_energy }
+		button = { text = GUIDLL_TEST_BTN_RICH  effect = guidll_test_rich_only }
+	}
+}

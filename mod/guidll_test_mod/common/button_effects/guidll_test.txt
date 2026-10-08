@@ -1,0 +1,38 @@
+# Button effects for the guidll test mod. Nothing in the game's own UI calls them: the panels of guidll (the Command Deck's script page and the
+# panel declared in interface/stl_gui/) run them through the engine's CExecuteButtonEffectCommand, for the player country (This = From = the player country).
+
+guidll_test_grant_energy = {
+	potential = { always = yes }
+	allow = { always = yes }
+	effect = {
+		add_resource = { energy = 100 }
+		log = "guidll_test_mod: guidll_test_grant_energy executed"
+	}
+}
+
+guidll_test_set_mark = {
+	potential = { always = yes }
+	allow = { NOT = { has_country_flag = guidll_test_marked } }
+	effect = {
+		set_country_flag = guidll_test_marked
+		log = "guidll_test_mod: guidll_test_set_mark executed"
+	}
+}
+
+guidll_test_clear_mark = {
+	potential = { always = yes }
+	allow = { has_country_flag = guidll_test_marked }
+	effect = {
+		remove_country_flag = guidll_test_marked
+		log = "guidll_test_mod: guidll_test_clear_mark executed"
+	}
+}
+
+# Needs far more alloys than any test save has: shows how the engine's own allow check is reported back to the UI.
+guidll_test_rich_only = {
+	potential = { always = yes }
+	allow = { has_resource = { type = alloys amount >= 1000000 } }
+	effect = {
+		add_resource = { unity = 1000 }
+	}
+}
