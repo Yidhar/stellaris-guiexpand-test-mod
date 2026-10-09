@@ -20,3 +20,7 @@
  GUIEXPAND_TEST_BTN_BUMP:0 "Add 1 to the counter"
  guiexpand_test_flag_on:0 "set"
  guiexpand_test_flag_off:0 "not set"
+ GUIEXPAND_TEST_EL_TITLE:0 "Elements and a HUD (test)"
+ GUIEXPAND_TEST_EL_INTRO:0 "The card below is an element that the example plugin registers; the host draws what is inside it. Under it, an element nobody provides."
+ GUIEXPAND_TEST_EL_CARD:0 "Registered elements"
+ GUIEXPAND_TEST_EL_TOGGLE:0 "Show / hide the first panel"

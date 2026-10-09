@@ -1,4 +1,4 @@
-# Button effects for the stellaris-guiexpand test mod. Nothing in the game's own UI calls them: the panels of stellaris-guiexpand (the Command Deck's script page and the
+# Button effects for the stellaris-guiexpand test mod. Nothing in the game's own UI calls them: the panels of stellaris-guiexpand (the script page of the Command Deck of stellaris-argon-ui and the
 # panel declared in interface/stl_gui/) run them through the engine's CExecuteButtonEffectCommand, for the player country (This = From = the player country).
 
 guiexpand_test_grant_energy = {

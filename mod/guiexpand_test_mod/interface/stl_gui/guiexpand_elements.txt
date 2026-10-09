@@ -1,0 +1,47 @@
+# A second panel of the test mod: it uses ELEMENTS that a plugin registers (examples/element of the stellaris-guiexpand repository, plugin id
+# example-element) and a HUD (an undecorated window anchored to the top of the screen, toggled with a hot key). Without the plugin the elements
+# show a dim note with the plugin id from stl_gui_requires; the host's own elements next to them still work.
+
+stl_gui_version = 1
+stl_gui_requires = { example-element }
+
+panel = {
+    id    = elements
+    title = GUIEXPAND_TEST_EL_TITLE
+    size  = { 380 400 }
+
+    content = {
+        text = { text = GUIEXPAND_TEST_EL_INTRO }
+        demo_card = {                                  # a container: its `content` is drawn by the host, inside the card
+            title = GUIEXPAND_TEST_EL_CARD
+            content = {
+                demo_meter = { resource = energy    label = GUIEXPAND_TEST_ENERGY }
+                demo_meter = { resource = minerals  label = GUIEXPAND_TEST_MINERALS }
+                demo_spark = { series = energy  height = 44 }
+                demo_stat = { stat = military_power  label = GUIEXPAND_TEST_MIL }                  # against the strongest empire of the galaxy
+                value = { label = GUIEXPAND_TEST_ENERGY_NET  resource = energy  show = net }      # a host element inside a plugin's card
+            }
+        }
+        demo_themes = { }                               # a button per theme of the host
+        demo_toggle = { text = GUIEXPAND_TEST_EL_TOGGLE  panel = "guiexpand_test_mod:overview" }
+        demo_fault = { }                                # crashes only when the example plugin is armed (see its source)
+        ring = { resource = energy }                    # nobody registers `ring` here: shows the note about a missing element
+    }
+}
+
+panel = {
+    id     = hud
+    kind   = hud                                        # no title bar, no background, not movable
+    anchor = top_center
+    offset = { 0 46 }
+    size   = { 420 26 }
+    hotkey = "ctrl+alt+h"                             # shows / hides it
+    open   = yes
+
+    content = {
+        row = {
+            date  = { label = GUIEXPAND_TEST_DATE }
+            value = { label = GUIEXPAND_TEST_ENERGY  resource = energy  show = stock }
+        }
+    }
+}
