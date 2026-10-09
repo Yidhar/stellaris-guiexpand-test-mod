@@ -1,0 +1,39 @@
+# A panel declared by a mod and drawn by stellaris-guiexpand (grammar: docs/mod-authors.md in the stellaris-guiexpand repository).
+# Without the plugin this file is never read: the game does not look into this folder.
+
+stl_gui_version = 1
+
+panel = {
+	id = overview
+	title = GUIEXPAND_TEST_TITLE            # a localisation key; text with a space in it is shown as written
+	size = { 380 440 }
+
+	content = {
+		text = { text = GUIEXPAND_TEST_INTRO }
+		separator = yes
+		date = { label = GUIEXPAND_TEST_DATE }
+		value = { label = GUIEXPAND_TEST_ENERGY    resource = energy    show = stock }
+		value = { label = GUIEXPAND_TEST_ENERGY_NET resource = energy   show = net }
+		gauge = { label = GUIEXPAND_TEST_MINERALS  resource = minerals }
+		stat  = { label = GUIEXPAND_TEST_COLONIES  stat = colonies }
+		stat  = { label = GUIEXPAND_TEST_MIL       stat = military_power }
+		separator = yes
+		# a button_effect asked as a yes/no question: allowed right now?  (clear_mark is allowed exactly while the flag is set)
+		badge = { probe = guiexpand_test_clear_mark  yes = GUIEXPAND_TEST_MARK_SET  no = GUIEXPAND_TEST_MARK_UNSET }
+		row = {
+			button = { text = GUIEXPAND_TEST_BTN_SET    effect = guiexpand_test_set_mark }
+			button = { text = GUIEXPAND_TEST_BTN_CLEAR  effect = guiexpand_test_clear_mark }
+		}
+		spacer = 6
+		button = { text = GUIEXPAND_TEST_BTN_GRANT effect = guiexpand_test_grant_energy }
+		button = { text = GUIEXPAND_TEST_BTN_RICH  effect = guiexpand_test_rich_only }
+		separator = yes
+		# Values the script computes. A localisation text may contain [Root.<variable>], [Root.GetName] or a scripted_loc: stellaris-guiexpand has the engine
+		# evaluate it for the player's country (the strings are in the localisation files).
+		text = { text = GUIEXPAND_TEST_SC_NAME }       # [Root.GetName]
+		text = { text = GUIEXPAND_TEST_SC_COUNTER }    # a stored variable, [Root.guiexpand_test_counter]
+		text = { text = GUIEXPAND_TEST_SC_FLAG }       # a scripted_loc with a trigger, [Root.GuiexpandTestFlag]
+		text = { text = GUIEXPAND_TEST_SC_VALUE }      # a script value through a scripted_loc, [Root.GuiexpandTestValue]
+		button = { text = GUIEXPAND_TEST_BTN_BUMP effect = guiexpand_test_bump_counter }
+	}
+}
